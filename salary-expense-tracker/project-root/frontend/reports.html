@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports · ExpenseWise</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="main-content">
+    <div class="topbar">
+      <div class="flex gap-8" style="align-items:center;">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div>
+          <h1>Reports & Analytics</h1>
+          <p>Deep dive into your monthly and yearly finances.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2>Filters</h2>
+      </div>
+      <div class="filters-bar">
+        <select id="monthFilter" class="form-control"></select>
+        <select id="yearFilter" class="form-control"></select>
+        <button class="btn btn-secondary btn-sm" id="downloadExpenseCsv">⬇ Export Expenses CSV</button>
+        <button class="btn btn-secondary btn-sm" id="downloadIncomeCsv">⬇ Export Income CSV</button>
+      </div>
+    </div>
+
+    <div class="grid-cards">
+      <div class="card stat-card income">
+        <div>
+          <div class="stat-label">Income (selected month)</div>
+          <div class="stat-value" id="monthIncome">₹0</div>
+        </div>
+        <div class="stat-icon">💰</div>
+      </div>
+      <div class="card stat-card expense">
+        <div>
+          <div class="stat-label">Expenses (selected month)</div>
+          <div class="stat-value" id="monthExpense">₹0</div>
+        </div>
+        <div class="stat-icon">🧾</div>
+      </div>
+      <div class="card stat-card balance">
+        <div>
+          <div class="stat-label">Balance (selected month)</div>
+          <div class="stat-value" id="monthBalance">₹0</div>
+        </div>
+        <div class="stat-icon">🏦</div>
+      </div>
+    </div>
+
+    <div class="charts-row">
+      <div class="card chart-card">
+        <h3>Yearly Income vs Expense Trend</h3>
+        <canvas id="yearlyTrendChart"></canvas>
+      </div>
+      <div class="card chart-card">
+        <h3>Expense Breakdown (Selected Month)</h3>
+        <canvas id="reportCategoryChart"></canvas>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2>Income by Category (Selected Month)</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th style="text-align:right;">Amount</th></tr></thead>
+          <tbody id="incomeCategoryBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2>Expenses by Category (Selected Month)</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th style="text-align:right;">Amount</th></tr></thead>
+          <tbody id="expenseCategoryBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/reports.js"></script>
+</body>
+</html>

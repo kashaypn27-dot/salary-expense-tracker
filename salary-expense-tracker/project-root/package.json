@@ -1,0 +1,13 @@
+{
+  "name": "salary-expense-tracker",
+  "version": "1.0.0",
+  "description": "Full-stack Salary & Expense Tracker (Node/Express/MySQL backend + vanilla JS frontend)",
+  "private": true,
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev",
+    "frontend": "npx serve frontend -l 5500"
+  },
+  "license": "MIT"
+}

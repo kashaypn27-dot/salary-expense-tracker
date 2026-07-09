@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · ExpenseWise</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="main-content">
+    <div class="topbar">
+      <div class="flex gap-8" style="align-items:center;">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div>
+          <h1>Dashboard</h1>
+          <p>Here's an overview of your finances.</p>
+        </div>
+      </div>
+      <select id="yearFilter" class="form-control" style="width:auto;"></select>
+    </div>
+
+    <div class="grid-cards">
+      <div class="card stat-card income">
+        <div>
+          <div class="stat-label">Total Income</div>
+          <div class="stat-value" id="statTotalIncome">₹0</div>
+        </div>
+        <div class="stat-icon">💰</div>
+      </div>
+      <div class="card stat-card expense">
+        <div>
+          <div class="stat-label">Total Expenses</div>
+          <div class="stat-value" id="statTotalExpense">₹0</div>
+        </div>
+        <div class="stat-icon">🧾</div>
+      </div>
+      <div class="card stat-card balance">
+        <div>
+          <div class="stat-label">Remaining Balance</div>
+          <div class="stat-value" id="statBalance">₹0</div>
+        </div>
+        <div class="stat-icon">🏦</div>
+      </div>
+      <div class="card stat-card warning">
+        <div>
+          <div class="stat-label">This Month</div>
+          <div class="stat-value" id="statMonth">₹0</div>
+        </div>
+        <div class="stat-icon">📅</div>
+      </div>
+    </div>
+
+    <div id="overspendBanner" class="alert alert-danger" style="display:none; margin-bottom:24px;"></div>
+
+    <div class="charts-row">
+      <div class="card chart-card">
+        <h3>Income vs Expenses — Monthly Trend</h3>
+        <canvas id="trendChart"></canvas>
+      </div>
+      <div class="card chart-card">
+        <h3>Expense Breakdown (This Month)</h3>
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

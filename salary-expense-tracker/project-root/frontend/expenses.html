@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expenses · ExpenseWise</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="main-content">
+    <div class="topbar">
+      <div class="flex gap-8" style="align-items:center;">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div>
+          <h1>Expenses</h1>
+          <p>Track and categorize your day-to-day spending.</p>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="addExpenseBtn">+ Add Expense</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2>All Expenses</h2>
+      </div>
+
+      <div class="filters-bar">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search by description...">
+        <select id="categoryFilter" class="form-control">
+          <option value="">All Categories</option>
+          <option value="Food">Food</option>
+          <option value="Rent">Rent</option>
+          <option value="Travel">Travel</option>
+          <option value="Bills">Bills</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Health">Health</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Other">Other</option>
+        </select>
+        <select id="monthFilter" class="form-control">
+          <option value="">All Months</option>
+        </select>
+        <select id="yearFilter" class="form-control"></select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th style="text-align:right;">Amount</th>
+              <th style="text-align:right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="expenseTableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <div class="icon">🧾</div>
+        <p>No expenses found. Add your first one!</p>
+      </div>
+
+      <div class="pagination">
+        <span id="paginationInfo"></span>
+        <div class="pages">
+          <button class="btn btn-secondary btn-sm" id="prevPage">← Prev</button>
+          <button class="btn btn-secondary btn-sm" id="nextPage">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Expense Modal -->
+<div class="modal-overlay" id="expenseModalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Add Expense</h3>
+      <button class="modal-close" id="closeModalBtn">&times;</button>
+    </div>
+    <form id="expenseForm" novalidate>
+      <input type="hidden" id="expenseId">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" class="form-control">
+            <option value="Food">Food</option>
+            <option value="Rent">Rent</option>
+            <option value="Travel">Travel</option>
+            <option value="Bills">Bills</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Health">Health</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount (₹)</label>
+          <input type="number" id="amount" class="form-control" placeholder="0.00" step="0.01" min="0.01">
+          <div class="form-error"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="expenseDate">Date</label>
+        <input type="date" id="expenseDate" class="form-control">
+        <div class="form-error"></div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description (optional)</label>
+        <textarea id="description" class="form-control" rows="2" placeholder="Notes..."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="saveExpenseBtn">Save Expense</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/expenses.js"></script>
+</body>
+</html>
